@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -33,11 +34,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="post: ${posts}">
-                <td th:text="${post.id}"/>
-                <td th:text="${post.name}"/>
-                <td th:text="${post.description}"/>
-                <td th:text="${post.created}"/>
+            <tr th:each="candidate: ${candidates}">
+                <td th:text="${candidate.id}"/>
+                <td th:text="${candidate.name}"/>
+                <td th:text="${candidate.description}"/>
+                <td th:text="${candidate.created}"/>
             </tr>
             </tbody>
         </table>
