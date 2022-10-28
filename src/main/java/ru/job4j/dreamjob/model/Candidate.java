@@ -45,4 +45,8 @@ public class Candidate {
     public LocalDateTime getCreated() {
         return created;
     }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
 }
