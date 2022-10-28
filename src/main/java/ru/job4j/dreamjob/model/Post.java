@@ -24,6 +24,10 @@ public class Post {
         return created;
     }
 
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
     public String getDescription() {
         return description;
     }
