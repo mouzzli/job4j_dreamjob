@@ -1,7 +1,5 @@
 package ru.job4j.dreamjob.model;
 
-import ru.job4j.dreamjob.util.Util;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -22,8 +20,8 @@ public class Post {
         this.created = LocalDateTime.now();
     }
 
-    public String getCreated() {
-        return created.format(Util.getFormatter());
+    public LocalDateTime getCreated() {
+        return created;
     }
 
     public String getDescription() {

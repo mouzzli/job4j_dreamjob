@@ -1,7 +1,5 @@
 package ru.job4j.dreamjob.model;
 
-import ru.job4j.dreamjob.util.Util;
-
 import java.time.LocalDateTime;
 
 public class Candidate {
@@ -44,7 +42,7 @@ public class Candidate {
         this.description = description;
     }
 
-    public String getCreated() {
-        return created.format(Util.getFormatter());
+    public LocalDateTime getCreated() {
+        return created;
     }
 }
