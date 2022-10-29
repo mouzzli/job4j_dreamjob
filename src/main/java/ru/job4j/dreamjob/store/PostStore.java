@@ -13,12 +13,12 @@ public class PostStore {
     private static final PostStore INST = new PostStore();
 
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
-    private final AtomicInteger id = new AtomicInteger();
+    private final AtomicInteger id = new AtomicInteger(3);
 
     private PostStore() {
-        posts.put(1, new Post(id.incrementAndGet(), "Junior Java Job", "Description for Junior"));
-        posts.put(2, new Post(id.incrementAndGet(), "Middle Java Job", "Description for Middle"));
-        posts.put(3, new Post(id.incrementAndGet(), "Senior Java Job", " Description for Senior"));
+        posts.put(1, new Post(1, "Junior Java Job", "Description for Junior"));
+        posts.put(2, new Post(2, "Middle Java Job", "Description for Middle"));
+        posts.put(3, new Post(3, "Senior Java Job", " Description for Senior"));
     }
 
     public static PostStore instOf() {
