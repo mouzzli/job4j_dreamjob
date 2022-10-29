@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CandidateStore {
     private static final CandidateStore INST = new CandidateStore();
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
-    private final AtomicInteger id = new AtomicInteger();
+    private final AtomicInteger id = new AtomicInteger(3);
 
     private CandidateStore() {
-        candidates.put(1, new Candidate(id.incrementAndGet(), "Petr Vasiliev", "Petr Description"));
-        candidates.put(2, new Candidate(id.incrementAndGet(), "Vasiliy Sokolov", "Vasiliy Description"));
-        candidates.put(3, new Candidate(id.incrementAndGet(), "Dmitriy Smirnov", "Dmitriy Description"));
+        candidates.put(1, new Candidate(1, "Petr Vasiliev", "Petr Description"));
+        candidates.put(2, new Candidate(2, "Vasiliy Sokolov", "Vasiliy Description"));
+        candidates.put(3, new Candidate(3, "Dmitriy Smirnov", "Dmitriy Description"));
     }
 
     public static CandidateStore instOf() {
@@ -39,7 +39,6 @@ public class CandidateStore {
     }
 
     public void update(Candidate candidate) {
-        candidate.setCreated(LocalDateTime.now());
         candidates.replace(candidate.getId(), candidate);
     }
 }
