@@ -2,6 +2,7 @@ package ru.job4j.dreamjob.store;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
+import ru.job4j.dreamjob.model.City;
 import ru.job4j.dreamjob.model.Post;
 
 import java.time.LocalDateTime;
@@ -17,9 +18,9 @@ public class PostStore {
     private final AtomicInteger id = new AtomicInteger(3);
 
     private PostStore() {
-        posts.put(1, new Post(1, "Junior Java Job", "Description for Junior"));
-        posts.put(2, new Post(2, "Middle Java Job", "Description for Middle"));
-        posts.put(3, new Post(3, "Senior Java Job", " Description for Senior"));
+        posts.put(1, new Post(1, "Junior Java Job", "Description for Junior", new City(1, "Москва")));
+        posts.put(2, new Post(2, "Middle Java Job", "Description for Middle", new City(1, "Москва")));
+        posts.put(3, new Post(3, "Senior Java Job", " Description for Senior", new City(2, "СПб")));
     }
 
     public Collection<Post> findAll() {

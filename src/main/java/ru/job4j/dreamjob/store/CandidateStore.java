@@ -3,6 +3,7 @@ package ru.job4j.dreamjob.store;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
+import ru.job4j.dreamjob.model.City;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -17,9 +18,9 @@ public class CandidateStore {
     private final AtomicInteger id = new AtomicInteger(3);
 
     private CandidateStore() {
-        candidates.put(1, new Candidate(1, "Petr Vasiliev", "Petr Description"));
-        candidates.put(2, new Candidate(2, "Vasiliy Sokolov", "Vasiliy Description"));
-        candidates.put(3, new Candidate(3, "Dmitriy Smirnov", "Dmitriy Description"));
+        candidates.put(1, new Candidate(1, "Petr Vasiliev", "Petr Description", new City(1, "Москва")));
+        candidates.put(2, new Candidate(2, "Vasiliy Sokolov", "Vasiliy Description", new City(1, "Москва")));
+        candidates.put(3, new Candidate(3, "Dmitriy Smirnov", "Dmitriy Description", new City(3, "Екб")));
     }
 
     public Collection<Candidate> findAll() {
