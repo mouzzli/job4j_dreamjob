@@ -7,8 +7,8 @@ public class Post {
     private int id;
     private String name;
     private String description;
-
     private LocalDateTime created;
+    private boolean visible;
 
     public Post() {
     }
@@ -18,6 +18,14 @@ public class Post {
         this.name = name;
         this.description = description;
         this.created = LocalDateTime.now();
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public LocalDateTime getCreated() {
