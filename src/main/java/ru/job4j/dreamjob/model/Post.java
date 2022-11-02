@@ -14,12 +14,13 @@ public class Post {
     public Post() {
     }
 
-    public Post(int id, String name, String description, City city) {
+    public Post(int id, String name, String description, City city, LocalDateTime created, boolean visible) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.created = LocalDateTime.now();
         this.city = city;
+        this.created = created;
+        this.visible = visible;
     }
 
     public City getCity() {
