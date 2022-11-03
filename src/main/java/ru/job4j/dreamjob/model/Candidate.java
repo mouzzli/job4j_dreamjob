@@ -22,6 +22,15 @@ public class Candidate {
         this.city = city;
     }
 
+    public Candidate(int id, String name, String description, City city, byte[] photo, LocalDateTime localDateTime) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created = localDateTime;
+        this.city = city;
+        this.photo = photo;
+    }
+
     public City getCity() {
         return city;
     }
