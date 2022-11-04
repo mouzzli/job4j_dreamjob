@@ -9,6 +9,7 @@ import ru.job4j.dreamjob.model.City;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,17 +97,12 @@ public class CandidateDBStore {
         return candidate;
     }
 
-    private Candidate getCandidate(ResultSet it) {
-        try {
-            return new Candidate(it.getInt("id"),
-                    it.getString("name"),
-                    it.getString("description"),
-                    new City(it.getInt("city_id")),
-                    it.getBytes("photo"),
-                    it.getTimestamp("created").toLocalDateTime());
-        } catch (Exception e) {
-            LOG.error(e.getMessage());
-        }
-        return null;
+    private Candidate getCandidate(ResultSet it) throws SQLException {
+        return new Candidate(it.getInt("id"),
+                it.getString("name"),
+                it.getString("description"),
+                new City(it.getInt("city_id")),
+                it.getBytes("photo"),
+                it.getTimestamp("created").toLocalDateTime());
     }
 }
