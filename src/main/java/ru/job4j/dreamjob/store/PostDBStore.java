@@ -8,6 +8,7 @@ import ru.job4j.dreamjob.model.Post;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -95,17 +96,12 @@ public class PostDBStore {
         return Optional.ofNullable(post);
     }
 
-    private Post getPost(ResultSet it) {
-        try {
-            return new Post(it.getInt("id"),
-                    it.getString("name"),
-                    it.getString("description"),
-                    new City(it.getInt("city_id")),
-                    it.getTimestamp("created").toLocalDateTime(),
-                    it.getBoolean("visible"));
-        } catch (Exception e) {
-            LOG.error(e.getMessage());
-        }
-        return null;
+    private Post getPost(ResultSet it) throws SQLException {
+        return new Post(it.getInt("id"),
+                it.getString("name"),
+                it.getString("description"),
+                new City(it.getInt("city_id")),
+                it.getTimestamp("created").toLocalDateTime(),
+                it.getBoolean("visible"));
     }
 }
