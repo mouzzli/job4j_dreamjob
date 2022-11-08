@@ -1,3 +1,3 @@
-ALTER TABLE users
-    ADD COLUMN email    TEXT UNIQUE,
-    ADD COLUMN password TEXT;
+ALTER TABLE users ADD COLUMN email TEXT UNIQUE;
+ALTER TABLE users ADD COLUMN password TEXT;
+
