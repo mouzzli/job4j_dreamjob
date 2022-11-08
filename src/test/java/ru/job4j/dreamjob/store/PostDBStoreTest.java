@@ -16,7 +16,7 @@ public class PostDBStoreTest {
     @Test
     public void whenCreatePost() {
         PostDBStore store = new PostDBStore(new Main().loadPool());
-        Post post = new Post(0, "Java Job", "Description", new City(1, "Москва"), LocalDateTime.now(), true);
+        Post post = new Post(0, "Java Job", "Description", new City(1, "Moscow"), LocalDateTime.now(), true);
         store.addPost(post);
         Post postInDb = store.findById(post.getId()).get();
         assertThat(postInDb.getName(), is(post.getName()));
@@ -28,7 +28,7 @@ public class PostDBStoreTest {
     @Test
     public void whenUpdatePost() {
         PostDBStore store = new PostDBStore(new Main().loadPool());
-        Post post = new Post(0, "Java Job", "Description", new City(1, "Москва"), LocalDateTime.now(), true);
+        Post post = new Post(0, "Java Job", "Description", new City(1, "Moscow"), LocalDateTime.now(), true);
         store.addPost(post);
         post.setName("New Name");
         store.update(post);
@@ -39,9 +39,9 @@ public class PostDBStoreTest {
     @Test
     public void whenFindAllPost() {
         PostDBStore store = new PostDBStore(new Main().loadPool());
-        Post post1 = new Post(0, "Java Job1", "Description1", new City(1, "Москва"), LocalDateTime.now(), true);
-        Post post2 = new Post(1, "Java Job2", "Description2", new City(1, "Москва"), LocalDateTime.now(), true);
-        Post post3 = new Post(2, "Java Job3", "Description3", new City(1, "Москва"), LocalDateTime.now(), true);
+        Post post1 = new Post(0, "Java Job1", "Description1", new City(1, "Moscow"), LocalDateTime.now(), true);
+        Post post2 = new Post(1, "Java Job2", "Description2", new City(1, "Moscow"), LocalDateTime.now(), true);
+        Post post3 = new Post(2, "Java Job3", "Description3", new City(1, "Moscow"), LocalDateTime.now(), true);
         List<Post> postsBefore = store.findAll();
         store.addPost(post1);
         store.addPost(post2);
