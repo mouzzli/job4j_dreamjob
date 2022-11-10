@@ -47,7 +47,7 @@ public class UserDBStore {
     }
 
     public Optional<User> findUserByEmailAndPassword(String email, String password) {
-        User user = null;
+        Optional<User> userOptional = Optional.empty();
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(FIND_USER_BY_EMAIL_AND_PASSWORD)
         ) {
@@ -55,13 +55,13 @@ public class UserDBStore {
             ps.setString(2, password);
             try (ResultSet it = ps.executeQuery()) {
                 while (it.next()) {
-                    user = getUser(it);
+                    userOptional = Optional.of(getUser(it));
                 }
             }
         } catch (Exception e) {
             LOG.error(e.getMessage());
         }
-        return Optional.ofNullable(user);
+        return userOptional;
     }
 
     private User getUser(ResultSet it) throws SQLException {
