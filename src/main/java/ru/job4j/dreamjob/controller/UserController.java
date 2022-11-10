@@ -22,13 +22,17 @@ public class UserController {
     }
 
     @GetMapping("/formAddUser")
-    public String addUser() {
+    public String addUser(Model model, @RequestParam(name = "fail", required = false) Boolean fail) {
+        model.addAttribute("fail", fail != null);
         return "addUser";
     }
 
-    @PostMapping("/createUser")
-    private String createUser(@ModelAttribute User user) {
-        service.addUSer(user);
+    @PostMapping("/registration")
+    public String registration(@ModelAttribute User user) {
+        Optional<User> regUser = service.addUSer(user);
+        if (regUser.isEmpty()) {
+            return "redirect:/formAddUser?fail=true";
+        }
         return "redirect:/index";
     }
 

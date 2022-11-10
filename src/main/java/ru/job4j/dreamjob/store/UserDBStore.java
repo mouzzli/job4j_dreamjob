@@ -25,7 +25,8 @@ public class UserDBStore {
         this.pool = pool;
     }
 
-    public User addUser(User user) {
+    public Optional<User> addUser(User user) {
+        Optional<User> userOptional = Optional.empty();
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(ADD_USER, PreparedStatement.RETURN_GENERATED_KEYS)
         ) {
@@ -37,11 +38,12 @@ public class UserDBStore {
                 if (it.next()) {
                     user.setId(it.getInt(1));
                 }
+                userOptional = Optional.of(user);
             }
         } catch (Exception e) {
             LOG.error(e.getMessage());
         }
-        return user;
+        return userOptional;
     }
 
     public Optional<User> findUserByEmailAndPassword(String email, String password) {
