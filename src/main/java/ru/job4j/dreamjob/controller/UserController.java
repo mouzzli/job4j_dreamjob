@@ -42,7 +42,8 @@ public class UserController {
     }
 
     @GetMapping("/loginPage")
-    public String loginPage(Model model, @RequestParam(name = "fail", required = false) Boolean fail) {
+    public String loginPage(Model model, HttpSession session, @RequestParam(name = "fail", required = false) Boolean fail) {
+        setSession(model, session);
         model.addAttribute("fail", fail != null);
         return "login";
     }
