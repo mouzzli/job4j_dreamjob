@@ -33,11 +33,12 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute User user) {
-        Optional<User> regUser = service.addUSer(user);
+    public String registration(@ModelAttribute User user, HttpServletRequest req) {
+        Optional<User> regUser = service.addUser(user);
         if (regUser.isEmpty()) {
             return "redirect:/formAddUser?fail=true";
         }
+        req.getSession().setAttribute("user", regUser.get());
         return "redirect:/index";
     }
 
@@ -56,8 +57,7 @@ public class UserController {
         if (userDb.isEmpty()) {
             return "redirect:/loginPage?fail=true";
         }
-        HttpSession session = req.getSession();
-        session.setAttribute("user", userDb.get());
+        req.getSession().setAttribute("user", userDb.get());
         return "redirect:/index";
     }
 }
